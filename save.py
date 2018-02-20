@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from rates.gdax import Gdax
 from rates.bithumb import Bithumb
 
-db = MongoClient(authSource="rates.db").bitcoinPremium.rates
+db = MongoClient().bitcoinPremium.rates
 
 exchanges = []
 exchanges.append(Gdax())
