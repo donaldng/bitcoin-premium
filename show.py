@@ -1,16 +1,13 @@
 from pymongo import MongoClient
-from rates.gdax import Gdax
-from rates.bithumb import Bithumb
 import datetime
 
 db = MongoClient().bitcoinPremium.rates
-data = db.find().sort("_id")
 
 forex = [ key for key in db.find_one() if key not in ['_id', 'usd'] ]
-
+print(forex)
 for fx in forex:
     print(fx)
-    for x in data:
+    for x in db.find().sort("_id"):
         try:
             if x["usd"] and x[fx]:
                 premium = (x[fx] / x["usd"]) - 1

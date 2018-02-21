@@ -1,12 +1,14 @@
 from pymongo import MongoClient
 from rates.gdax import Gdax
-from rates.bithumb import Bithumb
+from rates.exchange import Exchange
 
 db = MongoClient().bitcoinPremium.rates
 
 exchanges = []
 exchanges.append(Gdax())
-exchanges.append(Bithumb())
+exchanges.append(Exchange("bithumb", "krw"))
+exchanges.append(Exchange("bitflyer", "jpy"))
+exchanges.append(Exchange("luno", "myr"))
 
 for ex in exchanges:
     for x in ex.historical_prices():
