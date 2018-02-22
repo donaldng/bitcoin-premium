@@ -12,6 +12,7 @@ for fx in forex:
             if x["usd"] and x[fx]:
                 premium = (x[fx] / x["usd"]) - 1
                 premium = round(premium * 100, 2)
+                # 28800 => timezone +8 
                 print("%s %s%%" % (datetime.datetime.fromtimestamp( int(x["_id"]) + 28800 ).strftime('%Y-%m-%d %H:%M:%S'), premium))
         except:
             pass

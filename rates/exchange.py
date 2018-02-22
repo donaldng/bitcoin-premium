@@ -4,7 +4,9 @@ class Exchange():
     
     def __init__(self, name, currency):
         self.currency = currency.upper()
-        self.url = "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=%s&limit=60&aggregate=1&e=%s" % (self.currency, name)
+        self.timeframe = 1 # hour
+        self.timeframe = 24 # daily
+        self.url = "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=%s&limit=60&aggregate=%s&e=%s" % (self.currency, self.timeframe, name)
         self.forex = self.forexConversion()
 
     def forexConversion(self):

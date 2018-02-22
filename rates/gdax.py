@@ -9,7 +9,9 @@ class Gdax():
     def historical_prices(self):
         
         # granularity => candle timeframe in seconds
-        rate = self.client.get_product_historic_rates('BTC-USD', granularity=3600)
+        self.timeframe = 3600 # hour
+        self.timeframe = 86400 # daily
+        rate = self.client.get_product_historic_rates('BTC-USD', granularity=self.timeframe)
 
         '''
         RESPONSE:
